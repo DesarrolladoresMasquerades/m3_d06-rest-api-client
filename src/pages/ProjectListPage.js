@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import AddProject from "../components/AddProject";
+
+import ProjectCard from "./../components/ProjectCard";     //  <==  IMPORT
 
 const API_URL = "http://localhost:5005";
-
-import ProjectCard from "./../components/ProjectCard";
-import AddProject from "../components/AddProject";     //  <==  IMPORT
-
 
 function ProjectListPage() {
   const [projects, setProjects] = useState([]);
@@ -18,7 +17,7 @@ function ProjectListPage() {
       .catch((error) => console.log(error));
   };
 
-  // We set this effect will run only once, after the initial render
+  // We set this effect to run only once, after the initial render
   // by setting the empty dependency array - []
   useEffect(() => {
     getAllProjects();
@@ -30,8 +29,9 @@ function ProjectListPage() {
       
       <AddProject refreshProjects={getAllProjects} />
       
-      { projects.map((project) => <ProjectCard key={project._id} {...project} />  )} 
-       
+      {projects.map((project) => (
+        <ProjectCard key={project._id} {...project} />
+      ))}
     </div>
   );
 }
