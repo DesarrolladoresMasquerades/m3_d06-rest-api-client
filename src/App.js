@@ -15,10 +15,10 @@ function App() {
       <Switch>      
         <Route exact path="/" component={HomePage} />
         <Route exact path="/projects" component={ProjectListPage} />
-        <Route exact path="/projects/:id" component={ProjectDetailsPage} />
+        <Route exact path="/projects/:projectId" component={ProjectDetailsPage} />
         
          {/*  👇  ADD  👇  */}
-        <Route exact path="/projects/edit/:id" component={EditProjectPage} />           
+        <Route exact path="/projects/edit/:projectId" component={EditProjectPage} />           
       </Switch>
     </div>
   );
