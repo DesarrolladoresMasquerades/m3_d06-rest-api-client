@@ -1,22 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 
 const API_URL = "http://localhost:5005";
 
 function EditProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const projectId = props.match.params.id;
+  const { projectId } = useParams();
   
   useEffect(() => {
     axios
       .get(`${API_URL}/api/projects/${projectId}`)
       .then((response) => {
-        /* 
-          We update the state with the project data coming from the response.
-          This way our inputs will show the actual title and description 
-          of the project during the edit.
-        */
         const oneProject = response.data;
         setTitle(oneProject.title);
         setDescription(oneProject.description);
