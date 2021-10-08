@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";  //  <== IMPORT 
 
 const API_URL = "http://localhost:5005";                  // <== ADD
 
@@ -8,7 +8,7 @@ const API_URL = "http://localhost:5005";                  // <== ADD
 function ProjectDetailsPage (props) {
   const [project, setProject] = useState(null);
   // We access the URL parameter `:id` and save it in a variable
-  const projectId = props.match.params.id;											  // <== ADD  
+  const { projectId } = useParams();              // <== ADD
   
   
   // Helper function that makes a GET request to the API
