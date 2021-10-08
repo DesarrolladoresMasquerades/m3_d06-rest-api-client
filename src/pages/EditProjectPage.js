@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
 function EditProjectPage(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const projectId = props.match.params.id;
+  const { projectId } = useParams();
   
   useEffect(() => {
     axios
@@ -34,7 +35,6 @@ function EditProjectPage(props) {
   
   
   const deleteProject = () => {
-    
     axios
       .delete(`${API_URL}/api/projects/${projectId}`)
       .then(() => {
